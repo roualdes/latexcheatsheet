@@ -1,6 +1,8 @@
-# latexcheatsheet
+# A $\LaTeX$ Cheat Sheet
+
+An attempt at helping statistics students who are forced to use $\LaTeX$ find symbols that they're interested in.
+
 Link to: https://roualdes.github.io/latexcheatsheet/
-Forked from: https://github.com/roualdes/latexcheatsheet
 
 ```html
 <html>
