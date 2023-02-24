@@ -1,264 +1,593 @@
 <!DOCTYPE html>
 <!-- saved from url=(0025)https://roualdes.us/notes -->
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>notes
-        </title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Edward A. Roualdes">
-        <link rel="stylesheet" href="./index_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <style type="text/css">.container{margin-left: auto; margin-right: auto; max-width: 650px;}*{color: #666;}
-         //- .icon-bar{background-color: #000000;} .dropdown-backdrop {position: static;} hr{margin-top: 0px; margin-bottom: -10px;} .form-group{padding: 1px;} #HistContainer, #TableContainer, #HistSelector, #TableSelector, #Histogram, #Table{padding: 0px;}
-        </style>
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>notes
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Edward A. Roualdes">
+    <link rel="stylesheet" href="./index_files/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style type="text/css">
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 650px;
+        }
+
+        * {
+            color: #666;
+        }
+
+        //- .icon-bar{background-color: #000000;} .dropdown-backdrop {position: static;} hr{margin-top: 0px; margin-bottom: -10px;} .form-group{padding: 1px;} #HistContainer, #TableContainer, #HistSelector, #TableSelector, #Histogram, #Table{padding: 0px;}
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            /* padding: 10px; */
+            /* height: 300px; */
+            /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            /* display: table; */
+            /* clear: both; */
+        }
+
+        /* Remove the Dot in List Environment */
+        ul {
+            list-style-type: none;
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
             <script async src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js">
             </script>
             <script async src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js">
             </script>
         <![endif]-->
-        <script
-            src="https://code.jquery.com/jquery-3.6.2.slim.min.js"
-            integrity="sha256-E3P3OaTZH+HlEM7f1gdAT3lHAn4nWBZXuYe89DFg2d0="
-            crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.2.slim.min.js"
+        integrity="sha256-E3P3OaTZH+HlEM7f1gdAT3lHAn4nWBZXuYe89DFg2d0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
 
-        <!-- The loading of KaTeX is deferred to speed up page rendering -->
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+        crossorigin="anonymous"></script>
 
-        <!-- To automatically render math in text elements, include the auto-render extension: -->
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-                onload="renderMathInElement(document.body);"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
-        </script>
-        <script>document.addEventListener("DOMContentLoaded", function() {
-    renderMathInElement(document.body, {
-    delimiters: [
-        {left: "$$", right: "$$", display: true},
-        {left: "$", right: "$", display: false},
-        {left: "\\(", right: "\\)", display: false},
-        {left: "\\[", right: "\\]", display: true}]
-    });
-         });
-        </script>
-        <link rel="stylesheet" href="./index_files/atom-one-light.min.css">
-        <script src="./index_files/highlight.pack.js">
-        </script>
-        <script>hljs.initHighlightingOnLoad();
-        </script>
-        <script>$(document).ready(function(){
-  $("#notesSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#data").children("li").filter(function() {
-        var inText = $(this).text().toLowerCase().indexOf(value) > -1;
-        var inDataTags = $(this).find(`[data-tag*='${value}']`).length > 0;
-        $(this).toggle(inText || inDataTags)
-    });
-  });
-         });
-        </script>
-    </head>
-    <body>
-        <div class="container">
-            <nav class="navbar navbar-expand-sm">
-                <a class="navbar-brand" href="">A $\LaTeX$ Cheat Sheet</a>
-                <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-                    </span>
-                </button>
-            </nav>
-            <hr>
-            <p>A $\LaTeX$ cheat sheet inspired by <a href="https://github.com/KVentayen">Karl Ventayen</a>.</p>
-            <p>
+    </script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "$$", right: "$$", display: true },
+                    { left: "$", right: "$", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }]
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="./index_files/atom-one-light.min.css">
+    <script src="./index_files/highlight.pack.js">
+    </script>
+    <script>hljs.initHighlightingOnLoad();
+    </script>
+    <script>$(document).ready(function () {
+            $("#notesSearch").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#data").children("li").filter(function () {
+                    var inText = $(this).text().toLowerCase().indexOf(value) > -1;
+                    var inDataTags = $(this).find(`[data-tag*='${value}']`).length > 0;
+                    $(this).toggle(inText || inDataTags)
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm">
+            <a class="navbar-brand" href="">A $\LaTeX$ Cheat Sheet</a>
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse"
+                data-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                </span>
+            </button>
+        </nav>
+        <hr>
+        <p>A $\LaTeX$ cheat sheet inspired by <a href="https://github.com/KVentayen">Karl Ventayen</a>.</p>
+        <p>
             For now, this site focuses on statistics notation, because
-                that's where this idea first came from.
-            </p>
-            <p>Search for some math, $\LaTeX$, or other key terms.  $\LaTeX$ code for
-                the math symbols show up in <code>this color and style</code>. Most
-                of this syntax should be portable across various
-                $\LaTeX$ implementations.  This site uses <a href="">$\KaTeX$</a> and assumes you know enough already to surround all the <code>latex code</code> in dollar signs, like <code>$\alpha$</code> to get $\alpha$.  And use double dollar signs to get display mode math, that is centered and generally taller math expressions.
+            that's where this idea first came from.
+        </p>
+        <p>Search for some math, $\LaTeX$, or other key terms. $\LaTeX$ code for
+            the math symbols show up in <code>this color and style</code>. Most
+            of this syntax should be portable across various
+            $\LaTeX$ implementations. This site uses <a href="">$\KaTeX$</a> and assumes you know enough already to
+            surround all the <code>latex code</code> in dollar signs, like <code>$\alpha$</code> to get $\alpha$. And
+            use double dollar signs to get display mode math, that is centered and generally taller math expressions.
 
-            </p>
-            <div class="md-form mt-0">
-                <input class="form-control" type="text" placeholder="Search notes" aria-label="Search" id="notesSearch">
-            </div>
-            <br>
-            <ul id="data">
-                <li>
-                    <div data-tag="math">
-                        $\mathbb{E}[X] = \int_{S} x f(x) dx$ is typed in LaTeX as <code>\mathbb{E}[X] = \int_{S} x f(x) dx</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, alpha">
-                        $\alpha$ is typed as <code>\alpha</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, beta">
-                        $\beta$ is typed as <code>\beta</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, gamma">
-                        $\gamma$ is typed as <code>\gamma</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, delta">
-                        $\delta$ is typed as <code>\delta</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, epsilon">
-                        $\epsilon$ is typed as <code>\epsilon</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, zeta">
-                        $\zeta$ is typed as <code>\zeta</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, eta">
-                        $\eta$ is typed as <code>\eta</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, theta">
-                        $\theta$ is typed as <code>\theta</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, iota">
-                        $\iota$ is typed as <code>\iota</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, kappa">
-                        $\kappa$ is typed as <code>\kappa</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, lambda">
-                        $\lambda$ is typed as <code>\lambda</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, mu">
-                        $\mu$ is typed as <code>\mu</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, nu">
-                        $\nu$ is typed as <code>\nu</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, xi">
-                        $\xi$ is typed as <code>\xi</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, omicron">
-                        $\omicron$ is typed as <code>\omicron</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, pi">
-                        $\pi$ is typed as <code>\pi</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, rho">
-                        $\rho$ is typed as <code>\rho</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, sigma">
-                        $\sigma$ is typed as <code>\sigma</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, tau">
-                        $\tau$ is typed as <code>\tau</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, upsilon">
-                        $\upsilon$ is typed as <code>\upsilon</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, phi">
-                        $\phi$ is typed as <code>\phi</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, chi">
-                        $\chi$ is typed as <code>\chi</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, psi">
-                        $\psi$ is typed as <code>\psi</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="greek, omega">
-                        $\omega$ is typed as <code>\omega</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="probability, chebyshev">
-                        $\mathbb{P}[|X - \mu| \geq k \sigma] \leq \frac{1}{k^2}$ from <code>\mathbb{P}[|X - \mu| \geq k \sigma] \leq \frac{1}{k^2}</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="fraction">
-                        $\frac{x^2}{\mu/2}$ from <code>\frac{x^2}{\mu/2}</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="superscript, subscript">
-                        $x_{i-1}^{2y}$ from <code>x_{i-1}^{2y}</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="superscript, subscript, integral, display">
-                        $$\int_{0}^{1} x^2 dx$$ from <code>\int_{0}^{1} x^2 dx</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="conditional, probability">
-                        $\mathbb{P}[X \in A| Y = 2] = 0.5$ from <code>\mathbb{P}[X \in A| Y = 2] = 0.5</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="set, in, contained in">
-                        $a \in A$ from <code>a \in A</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="set, subset">
-                        $A \subset B$ from <code>A \subset B</code>
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="sum, expectation">
-                        $\mathbb{E}[X] = \sum_{x \in \{0, 1\}} x * f(x) = 0 * f(0) + 1 * f(1)$
-                    </div>
-                </li>
-                <li>
-                    <div data-tag="curly brace">
-                        <code>\{0, 1, 2, 3\}</code> is equivalent to $\{0, 1, 2, 3\}$
-                    </div>
-                </li>
-            </ul>
+        </p>
+        <div class="md-form mt-0">
+            <input class="form-control" type="text" placeholder="Search notes" aria-label="Search" id="notesSearch">
         </div>
-    </body>
+        <br>
+        <ul id="data">
+            <!-- KIR: Test Element Start -->
+            <div data-tag="" class="row" style="text-align:center">
+                <div class="column" style="background-color: #59BFFF;">
+                    Description
+                </div>
+                <div class="column" style="background-color: #8CD3FF;">
+                    $\LaTeX$ Output
+                </div>
+                <div class="column" style="background-color: #BFE6FF;">
+                    $\LaTeX$ Code
+                </div>
+            </div>
+            <li>
+                <div data-tag="math" class="row">
+                    <div class="column">
+                        Expectation Formula
+                    </div>
+                    <div class="column">
+                        $\mathbb{E}[X] = \int_{S} x f(x) dx$
+                    </div>
+                    <div class="column">
+                        <code>\mathbb{E}[X] = \int_{S} x f(x) dx</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, alpha" class="row">
+                    <div class="column">
+                        alpha (lowercase)
+                    </div>
+                    <div class="column">
+                        $\alpha$
+                    </div>
+                    <div class="column">
+                        <code>\alpha</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, beta" class="row">
+                    <div class="column">
+                        beta (lowercase)
+                    </div>
+                    <div class="column">
+                        $\beta$
+                    </div>
+                    <div class="column">
+                        <code>\beta</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, gamma" class="row">
+                    <div class="column">
+                        gamma (lowercase)
+                    </div>
+                    <div class="column">
+                        $\gamma$
+                    </div>
+                    <div class="column">
+                        <code>\gamma</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, delta" class="row">
+                    <div class="column">
+                        delta (lowercase)
+                    </div>
+                    <div class="column">
+                        $\delta$
+                    </div>
+                    <div class="column">
+                        <code>\delta</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, epsilon" class="row">
+                    <div class="column">
+                        epsilon (lowercase)
+                    </div>
+                    <div class="column">
+                        $\epsilon$
+                    </div>
+                    <div class="column">
+                        <code>\epsilon</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, zeta" class="row">
+                    <div class="column">
+                        zeta (lowercase)
+                    </div>
+                    <div class="column">
+                        $\zeta$
+                    </div>
+                    <div class="column">
+                        <code>\zeta</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, eta" class="row">
+                    <div class="column">
+                        eta (lowercase)
+                    </div>
+                    <div class="column">
+                        $\eta$
+                    </div>
+                    <div class="column">
+                        <code>\eta</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, theta" class="row">
+                    <div class="column">
+                        theta (lowercase)
+                    </div>
+                    <div class="column">
+                        $\theta$
+                    </div>
+                    <div class="column">
+                        <code>\theta</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, iota" class="row">
+                    <div class="column">
+                        iota (lowercase)
+                    </div>
+                    <div class="column">
+                        $\iota$
+                    </div>
+                    <div class="column">
+                        <code>\iota</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, kappa" class="row">
+                    <div class="column">
+                        kappa (lowercase)
+                    </div>
+                    <div class="column">
+                        $\kappa$
+                    </div>
+                    <div class="column">
+                        <code>\kappa</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, lambda" class="row">
+                    <div class="column">
+                        lambda (lowercase)
+                    </div>
+                    <div class="column">
+                        $\lambda$
+                    </div>
+                    <div class="column">
+                        <code>\lambda</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, mu" class="row">
+                    <div class="column">
+                        mu (lowercase)
+                    </div>
+                    <div class="column">
+                        $\mu$
+                    </div>
+                    <div class="column">
+                        <code>\mu</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, nu" class="row">
+                    <div class="column">
+                        nu (lowercase)
+                    </div>
+                    <div class="column">
+                        $\nu$
+                    </div>
+                    <div class="column">
+                        <code>\nu</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, xi" class="row">
+                    <div class="column">
+                        xi (lowercase)
+                    </div>
+                    <div class="column">
+                        $\xi$
+                    </div>
+                    <div class="column">
+                        <code>\xi</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, omicron" class="row">
+                    <div class="column">
+                        omicron (lowercase)
+                    </div>
+                    <div class="column">
+                        $\omicron$
+                    </div>
+                    <div class="column">
+                        <code>\omicron</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, pi" class="row">
+                    <div class="column">
+                        pi (lowercase)
+                    </div>
+                    <div class="column">
+                        $\pi$
+                    </div>
+                    <div class="column">
+                        <code>\pi</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, rho" class="row">
+                    <div class="column">
+                        rho (lowercase)
+                    </div>
+                    <div class="column">
+                        $\rho$
+                    </div>
+                    <div class="column">
+                        <code>\rho</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, sigma" class="row">
+                    <div class="column">
+                        sigma (lowercase)
+                    </div>
+                    <div class="column">
+                        $\sigma$
+                    </div>
+                    <div class="column">
+                        <code>\sigma</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, tau" class="row">
+                    <div class="column">
+                        tau (lowercase)
+                    </div>
+                    <div class="column">
+                        $\tau$
+                    </div>
+                    <div class="column">
+                        <code>\tau</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, upsilon" class="row">
+                    <div class="column">
+                        upsilon (lowercase)
+                    </div>
+                    <div class="column">
+                        $\upsilon$
+                    </div>
+                    <div class="column">
+                        <code>\upsilon</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, phi" class="row">
+                    <div class="column">
+                        phi (lowercase)
+                    </div>
+                    <div class="column">
+                        $\phi$
+                    </div>
+                    <div class="column">
+                        <code>\phi</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, chi" class="row">
+                    <div class="column">
+                        chi (lowercase)
+                    </div>
+                    <div class="column">
+                        $\chi$
+                    </div>
+                    <div class="column">
+                        <code>\chi</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, psi" class="row">
+                    <div class="column">
+                        psi (lowercase)
+                    </div>
+                    <div class="column">
+                        $\psi$
+                    </div>
+                    <div class="column">
+                        <code>\psi</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="greek, omega" class="row">
+                    <div class="column">
+                        omega (lowercase)
+                    </div>
+                    <div class="column">
+                        $\omega$
+                    </div>
+                    <div class="column">
+                        <code>\omega</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="probability, chebyshev" class="row">
+                    <div class="column">
+                        Chebyshev Probability
+                    </div>
+                    <div class="column">
+                        $\mathbb{P}[|X - \mu| \geq k \sigma] \leq \frac{1}{k^2}$
+                    </div>
+                    <div class="column">
+                        <code>\mathbb{P}[|X - \mu| \geq k \sigma] \leq \frac{1}{k^2}</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="fraction" class="row">
+                    <div class="column">
+                        Fraction
+                    </div>
+                    <div class="column">
+                        $\frac{x^2}{\mu/2}$
+                    </div>
+                    <div class="column">
+                        <code>\frac{x^2}{\mu/2}</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="superscript, subscript" class="row">
+                    <div class="column">
+                        Superscript, Subscript
+                    </div>
+                    <div class="column">
+                        $x_{i-1}^{2y}$
+                    </div>
+                    <div class="column">
+                        <code>x_{i-1}^{2y}</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="superscript, subscript, integral, display" class="row">
+                    <div class="column">
+                        Integral with Limits
+                    </div>
+                    <div class="column">
+                        $\int_{0}^{1} x^2 dx$
+                    </div>
+                    <div class="column">
+                        <code>\int_{0}^{1} x^2 dx</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="conditional, probability" class="row">
+                    <div class="column">
+                        Conditinal Probability
+                    </div>
+                    <div class="column">
+                        $\mathbb{P}[X \in A| Y = 2] = 0.5$
+                    </div>
+                    <div class="column">
+                        <code>\mathbb{P}[X \in A| Y = 2] = 0.5</code>
+                    </div>
+                </div>
+            </li>
+            <!-- KIR: Test Element End -->
+            <li>
+                <div data-tag="set, in, contained in" class="row">
+                    <div class="column">
+                        Element in Set
+                    </div>
+                    <div class="column">
+                        $a \in A$
+                    </div>
+                    <div class="column">
+                        <code>a \in A</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="set, subset" class="row">
+                    <div class="column">
+                        Subset of Set
+                    </div>
+                    <div class="column">
+                        $A \subset B$
+                    </div>
+                    <div class="column">
+                        <code>A \subset B</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="sum, expectation" class="row">
+                    <div class="column">
+                        Expectation Formula
+                    </div>
+                    <div class="column">
+$\mathbb{E}[X] = \sum_{x \in \{0, 1\}} x * f(x) = 0 * f(0) + 1 * f(1)$
+                    </div>
+                    <div class="column">
+                        <code>$\mathbb{E}[X] = \sum_{x \in \{0, 1\}} x * f(x) = 0 * f(0) + 1 * f(1)$</code>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div data-tag="curly brace" class="row">
+                    <div class="column">
+                        Curly Brace
+                    </div>
+                    <div class="column">
+$\{0, 1, 2, 3\}$
+                    </div>
+                    <div class="column">
+<code>\{0, 1, 2, 3\}</code>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
 </html>
