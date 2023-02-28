@@ -11,12 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out latexcheatsheet
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          repository: roualdes/latexcheatsheet
-
-      - name: Prettify
-        uses: creyD/prettier_action@v4.2
-        with:
-          prettier_options: --write index.html
+          node-version: 16
+      - run: npm install prettier
+      - run: npx --write index.html
