@@ -12,17 +12,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+
       - run: npm install prettier
+
       - run: npx prettier --write index.html
-      - name: Setup git identity
+
+      - name: Check for changes
+        id: check_diff
+        run: |
+          git diff --quiet . || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Setup git identity and commit changes
+        if: steps.check_diff.outputs.changed == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - name: Commit changes
-        run: |
           git add index.html
           git commit -m "prettify index.html"
           git push
